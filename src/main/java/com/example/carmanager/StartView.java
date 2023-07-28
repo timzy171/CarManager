@@ -3,7 +3,6 @@ package com.example.carmanager;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -23,4 +22,5 @@ public class StartView extends VerticalLayout {
             UI.getCurrent().navigate("search");
         });
     }
+
 }
