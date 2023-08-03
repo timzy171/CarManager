@@ -11,4 +11,5 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car,Integer> {
     @Query("from Car c where lower(c.mark) like concat(:mark,'%')")
     public List<Car> findByMark(@Param("mark") String mark);
+
 }

@@ -7,7 +7,6 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.IFrame;
 
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;

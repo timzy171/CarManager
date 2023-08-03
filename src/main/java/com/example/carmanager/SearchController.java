@@ -3,7 +3,6 @@ package com.example.carmanager;
 
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
-import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
