@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car,Integer> {
-    @Query("from Car c where lower(c.mark) like concat(:mark,'%')")
-    public List<Car> findByMark(@Param("mark") String mark);
+    @Query("from Car c where lower(concat(c.mark,c.model)) like concat('%',replace(:car,' ',''),'%')")
+    public List<Car> findByMarkAndModel(@Param("car") String car);
 
 }

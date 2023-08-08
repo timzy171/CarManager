@@ -3,19 +3,16 @@ package com.example.carmanager;
 
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +21,7 @@ import java.util.Set;
 @CssImport(value = "./styles/searchView.css")
 public class SearchView extends VerticalLayout {
     CarRepository carRepository;
-    public SearchView(CarRepository carRepository) throws IOException {
+    public SearchView(CarRepository carRepository) {
         this.carRepository = carRepository;
         List<Car> carList = carRepository.findAll();
         Set<String> marks = new HashSet<>();
@@ -35,6 +32,7 @@ public class SearchView extends VerticalLayout {
         searchText.setPlaceholder("Input car name");
         Button searchButton = new Button();
         searchButton.setText("FIND");
+        searchButton.addClickShortcut(Key.ENTER);
         add(searchText);
         add(searchButton);
         setClassNames(searchText,searchButton);
@@ -48,6 +46,7 @@ public class SearchView extends VerticalLayout {
             Image carImage = new Image("logo/" + mark.toLowerCase() + ".png",mark);
             carImage.setWidth("100px");
             carImage.setHeight("100px");
+            carImage.setClassName("image");
             carImage.addClickListener(imageClickEvent -> {
                 UI.getCurrent().navigate("/search/" + mark.toLowerCase());
             });

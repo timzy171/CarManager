@@ -12,3 +12,7 @@
 .firstHorizontalLayout{
     margin-top: 70px;
 }
+
+.image{
+    cursor: pointer;
+}
