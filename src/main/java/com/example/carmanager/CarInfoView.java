@@ -77,7 +77,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
         }
     }
 
-    public String firstUpperCase(String word){
+    public static String firstUpperCase(String word){
         return word.substring(0,1).toUpperCase() + word.substring(1);
     }
 

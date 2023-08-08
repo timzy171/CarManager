@@ -19,9 +19,9 @@ import java.util.Set;
 
 @Route("/")
 @CssImport(value = "./styles/searchView.css")
-public class SearchView extends VerticalLayout {
+public class HelloPage extends VerticalLayout {
     CarRepository carRepository;
-    public SearchView(CarRepository carRepository) {
+    public HelloPage(CarRepository carRepository) {
         this.carRepository = carRepository;
         List<Car> carList = carRepository.findAll();
         Set<String> marks = new HashSet<>();
