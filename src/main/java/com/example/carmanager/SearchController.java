@@ -3,13 +3,13 @@ package com.example.carmanager;
 
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,7 +31,6 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
         AtomicReference<HorizontalLayout> textHl = new AtomicReference<>(new HorizontalLayout());
         hl.get().setSpacing(false);
         hl.get().getThemeList().add("spacing-xl");
-        textHl.get().setSpacing(false);
         textHl.get().getThemeList().add("spacing-xl");
         carList.forEach(
                 car -> {
@@ -41,18 +40,17 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                     if(i.get() < 5 && carList.size() > 5){
                         i.incrementAndGet();
                         hl.get().add(carImage);
-                        H6 h6 = new H6(car.mark + " " + car.model);
-                        h6.setClassName("car" + String.valueOf(i.get()));
-                        textHl.get().add(h6);
+                        H6 carInfo = new H6(car.mark + " " + car.model);
+                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));
                     }
                     else if(carList.size() <= 5){
                         hl.get().add(carImage);
-                        H6 h6 = new H6(car.mark + " " + car.model);
-                        h6.setClassName("car" + String.valueOf(i.get()));
-                        textHl.get().add(h6);
+                        H6 carInfo = new H6(car.mark + " " + car.model);
+                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));
                         i.incrementAndGet();
                         if(i.get() == carList.size()){
                             add(hl.get());
+                            add(textHl.get());
                         }
                     }
                     else{
@@ -62,15 +60,23 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                         hl.get().setSpacing(false);
                         hl.get().getThemeList().add("spacing-xl");
                         textHl.set(new HorizontalLayout());
-                        textHl.get().setSpacing(false);
                         textHl.get().getThemeList().add("spacing-xl");
                         i.set(1);
                         hl.get().add(carImage);
-                        H6 h6 = new H6(car.mark + " " + car.model);
-                        h6.setClassName("car" + String.valueOf(i.get()));
-                        textHl.get().add(h6);
-                    }
+                        H6 carInfo = new H6(car.mark + " " + car.model);
+                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));                    }
                 }
         );
+    }
+
+    public H6 setSpacingTextAndRoute(H6 carName,Car car){
+        while(carName.getText().length() != 35){
+            carName.setText(carName.getText() + "ㅤ");
+        }
+        carName.addClickListener(h6ClickEvent -> {
+            UI.getCurrent().navigate("/search/carInfo/" +  car.mark.toLowerCase().trim() + '-' + car.model.toLowerCase().trim());
+        });
+        carName.setClassName("carInfo");
+        return carName;
     }
 }
