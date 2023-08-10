@@ -2,11 +2,8 @@ package com.example.carmanager;
 
 
 import com.example.carmanager.repo.CarRepository;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.IFrame;
+import com.vaadin.flow.component.html.*;
 
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
@@ -15,6 +12,7 @@ import com.vaadin.flow.router.Route;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -47,30 +45,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
                 URL = "http://www.motorpage.ru/" + firstUpperCase(mark) + "/" + firstUpperCase(model) + "/last/";
 
             }
-            Document document = Jsoup.connect(URL).get();
-            Element imgInfo = document.getElementsByAttributeValue("itemprop","image").first();
-            String imageURL = imgInfo.absUrl("src");
-            Image carImage = new Image(imageURL,car);
-            add(carImage);
-            String description = document.getElementsByAttributeValue("itemprop","description").text();
-            String videoURL = null;
-            IFrame iFrame = new IFrame();
-            try {
-                videoURL = document.select("iframe").first().absUrl("src");
-                iFrame.setSrc(videoURL);
-            }
-            catch (Exception e){
-            }
-            iFrame.setAllow("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
-            iFrame.getElement().setAttribute("allowfullscreen", true);
-            iFrame.getElement().setAttribute("frameborder", "0");
-            iFrame.setHeight("315px");
-            iFrame.setWidth("100%");
-            add(new H1(firstUpperCase(mark) + " " + firstUpperCase(model).replaceAll("_"," ")));
-            add(new H3(description));
-            if(videoURL != null){
-                add(iFrame);
-            }
+            addInfoToPage(URL);
         } catch (IOException e) {
             System.out.println(car);
             throw new RuntimeException(e);
@@ -81,4 +56,54 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
         return word.substring(0,1).toUpperCase() + word.substring(1);
     }
 
+    public void addInfoToPage(String URL) throws IOException {
+        Document document = Jsoup.connect(URL).get();
+        addImageToPage(document);
+        String carName = document.select("h1").first().text();
+        add(new H1(carName));
+
+        Elements elements = document.getElementsByAttributeValue("itemprop","description");
+        var info = elements.get(0).getAllElements();
+
+        for (int i = 0; i < info.size(); i++) {
+            if(info.get(i).is("h1")){
+                add(new H1(info.get(i).text()));
+            }
+            else if(info.get(i).is("h2")){
+                add(new H2(info.get(i).text()));
+            }
+            if(info.get(i).is("p")){
+                add(new H4(info.get(i).text()));
+            }
+        }
+
+        addVideoToPage(document);
+
+    }
+
+    public void addImageToPage(Document document) throws IOException {
+        Element imgInfo = document.getElementsByAttributeValue("itemprop","image").first();
+        String imageURL = imgInfo.absUrl("src");
+        Image carImage = new Image(imageURL,"Error");
+        add(carImage);
+    }
+
+    public void addVideoToPage(Document document){
+        String videoURL = null;
+        IFrame iFrame = new IFrame();
+        try {
+            videoURL = document.select("iframe").first().absUrl("src");
+            iFrame.setSrc(videoURL);
+        }
+        catch (Exception e){
+        }
+        iFrame.setAllow("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+        iFrame.getElement().setAttribute("allowfullscreen", true);
+        iFrame.getElement().setAttribute("frameborder", "0");
+        iFrame.setHeight("315px");
+        iFrame.setWidth("100%");
+        if(videoURL != null){
+            add(iFrame);
+        }
+    }
 }
