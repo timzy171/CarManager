@@ -5,6 +5,7 @@ import com.example.carmanager.repo.CarRepository;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
 
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
@@ -75,7 +76,9 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
                 add(text);
             }
             if(info.get(i).is("p")){
-                add(new H4(info.get(i).text()));
+                H4 text = new H4(info.get(i).text());
+                text.addClassName("info");
+                add(text);
             }
         }
 
@@ -83,11 +86,21 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
 
     }
 
-    public void addImageToPage(Document document) throws IOException {
+    public void addImageToPage(Document document) {
+        var hl = new HorizontalLayout();
         Element imgInfo = document.getElementsByAttributeValue("itemprop","image").first();
         String imageURL = imgInfo.absUrl("src");
         Image carImage = new Image(imageURL,"Error");
-        add(carImage);
+        carImage.setClassName("carImage");
+        hl.add(carImage);
+        Elements images = document.select("div.model-img").select("figure");
+        for (int i = 0; i < 2; i++) {
+            Element imgElem = images.get(i).child(0);
+            Image image = new Image(imgElem.absUrl("src"),"error");
+            image.setClassName("carImage");
+            hl.add(image);
+        }
+        add(hl);
     }
 
     public void addVideoToPage(Document document){

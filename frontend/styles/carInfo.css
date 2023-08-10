@@ -1,5 +1,18 @@
 .title{
     margin-left: auto;
     margin-right: auto;
-    font-family: Helvetica, serif;
+    font-family: "Lucida Console", "Courier New", sans-serif;
+}
+
+.info{
+    line-height: 150%;
+    color: #525252;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carImage{
+    width: 450px;
+    height: 320px;
 }
