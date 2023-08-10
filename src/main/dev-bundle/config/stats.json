@@ -229,10 +229,12 @@
   "Frontend/generated/jar-resources/vaadin-grid-flow-selection-column.js",
   "Frontend/generated/jar-resources/vaadin-time-picker/timepickerConnector.js",
   "Frontend/generated/jar-resources/virtualListConnector.js",
+  "Frontend/styles/carInfo.css",
   "Frontend/styles/searchController.css",
   "Frontend/styles/searchView.css"
  ],
  "frontendHashes": {
+  "styles/carInfo.css": "0f8d4c99b7dbbb902cfa7bc5dd88b383c89222d8ed361a9315100356cdfa6230",
   "styles/searchView.css": "868f97938204aaa24310648ed260e5400373c95b565d8680175731e1ef08d1fd",
   "styles/searchController.css": "ed29d40d656ed952cc9979ae215cf9110fe32d2f0a54d584b5912572dccc021a",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
@@ -256,12 +258,12 @@
  },
  "themeJsonContents": {},
  "entryScripts": [
-  "VAADIN/build/indexhtml-e46a7ad0.js"
+  "VAADIN/build/indexhtml-35ce2b55.js"
  ],
  "webComponents": [],
  "cvdlModules": {},
  "packageJsonHash": "dab916f7568ddf7c1412f4539935b9d88d4892f427f21fb6e65617c49fa18309",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-e46a7ad0.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-35ce2b55.js\"></script>"
  ]
 }

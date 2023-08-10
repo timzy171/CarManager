@@ -2,6 +2,7 @@ package com.example.carmanager;
 
 
 import com.example.carmanager.repo.CarRepository;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
 @Route("/search/carInfo")
+@CssImport(value = "./styles/carInfo.css")
 public class CarInfoView  extends VerticalLayout implements HasUrlParameter<String> {
     @Autowired
     CarRepository carRepository;
@@ -59,18 +61,18 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
     public void addInfoToPage(String URL) throws IOException {
         Document document = Jsoup.connect(URL).get();
         addImageToPage(document);
-        String carName = document.select("h1").first().text();
-        add(new H1(carName));
+        H1 carName = new H1(document.select("h1").first().text());
+        carName.setClassName("title");
+        add(carName);
 
         Elements elements = document.getElementsByAttributeValue("itemprop","description");
         var info = elements.get(0).getAllElements();
 
         for (int i = 0; i < info.size(); i++) {
-            if(info.get(i).is("h1")){
-                add(new H1(info.get(i).text()));
-            }
-            else if(info.get(i).is("h2")){
-                add(new H2(info.get(i).text()));
+            if(info.get(i).is("h2")){
+                H2 text = new H2(firstUpperCase(info.get(i).text()));
+                text.addClassName("title");
+                add(text);
             }
             if(info.get(i).is("p")){
                 add(new H4(info.get(i).text()));
