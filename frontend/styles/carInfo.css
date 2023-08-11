@@ -16,3 +16,13 @@
     width: 450px;
     height: 320px;
 }
+
+.flag{
+    width: 60px;
+    height: 55px;
+}
+
+.carName{
+    margin-left: auto;
+    margin-right: auto;
+}

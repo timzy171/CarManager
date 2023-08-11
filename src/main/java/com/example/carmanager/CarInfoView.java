@@ -1,6 +1,4 @@
 package com.example.carmanager;
-
-
 import com.example.carmanager.repo.CarRepository;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
@@ -39,6 +37,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
             model = carInfo[1];
         }
         String URL;
+        String country = carRepository.findByMarkAndModel(mark + model).get(0).country;
         try {
             if(model.contains(" ")){
                 model = model.replaceAll(" ","_");
@@ -48,7 +47,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
                 URL = "http://www.motorpage.ru/" + firstUpperCase(mark) + "/" + firstUpperCase(model) + "/last/";
 
             }
-            addInfoToPage(URL);
+            addInfoToPage(URL,country);
         } catch (IOException e) {
             System.out.println(car);
             throw new RuntimeException(e);
@@ -59,12 +58,17 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
         return word.substring(0,1).toUpperCase() + word.substring(1);
     }
 
-    public void addInfoToPage(String URL) throws IOException {
+    public void addInfoToPage(String URL,String country) throws IOException {
         Document document = Jsoup.connect(URL).get();
         addImageToPage(document);
         H1 carName = new H1(document.select("h1").first().text());
-        carName.setClassName("title");
-        add(carName);
+        var hl = new HorizontalLayout();
+        hl.addClassName("carName");
+        hl.add(carName);
+        Image flag = new Image("flags/" + country + ".png","FLAG");
+        flag.setClassName("flag");
+        hl.add(flag);
+        add(hl);
 
         Elements elements = document.getElementsByAttributeValue("itemprop","description");
         var info = elements.get(0).getAllElements();
