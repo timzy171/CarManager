@@ -104,6 +104,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
             image.setClassName("carImage");
             hl.add(image);
         }
+        hl.setClassName("imageLayout");
         add(hl);
     }
 
