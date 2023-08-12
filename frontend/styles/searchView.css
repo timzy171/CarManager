@@ -1,12 +1,10 @@
 .sButton{
     background-color: aqua;
-    margin: -55px 1200px;
     width: 100px;
 }
 
 .sTextField{
-    margin-left: 230px;
-    width: 950px;
+    width: 1200px;
 }
 
 .firstHorizontalLayout{
@@ -15,4 +13,9 @@
 
 .image{
     cursor: pointer;
+}
+
+.searchLayout{
+    margin-left: auto;
+    margin-right: auto;
 }

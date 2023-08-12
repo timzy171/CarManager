@@ -29,13 +29,16 @@ public class HelloPage extends VerticalLayout {
             marks.add(car.mark);
         }
         TextField searchText = new TextField();
+        var searchLayout = new HorizontalLayout();
         searchText.setPlaceholder("Input car name");
         Button searchButton = new Button();
         searchButton.setText("FIND");
         searchButton.addClickShortcut(Key.ENTER);
-        add(searchText);
-        add(searchButton);
+        searchLayout.add(searchText);
+        searchLayout.add(searchButton);
         setClassNames(searchText,searchButton);
+        searchLayout.setClassName("searchLayout");
+        add(searchLayout);
 
         var hl = new HorizontalLayout();
         hl.setSpacing(false);
