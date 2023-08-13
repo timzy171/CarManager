@@ -58,6 +58,7 @@ public class HelloPage extends VerticalLayout {
                 ++i;
             }
             else{
+                hl.setClassName("imagesLayout");
                 add(hl);
                 hl = new HorizontalLayout();
                 hl.setSpacing(false);

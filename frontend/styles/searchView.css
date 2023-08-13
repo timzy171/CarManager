@@ -1,6 +1,7 @@
 .sButton{
-    background-color: aqua;
+    background-color: #606060;
     width: 100px;
+    color: antiquewhite;
 }
 
 .sTextField{
@@ -9,6 +10,8 @@
 
 .firstHorizontalLayout{
     margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image{
@@ -16,6 +19,11 @@
 }
 
 .searchLayout{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagesLayout{
     margin-left: auto;
     margin-right: auto;
 }
