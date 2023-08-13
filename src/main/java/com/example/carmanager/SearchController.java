@@ -3,6 +3,8 @@ package com.example.carmanager;
 
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
+import com.vaadin.flow.component.ClickNotifier;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
@@ -35,19 +37,23 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                 car -> {
                     String model = car.model.toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
                     Image carImage = HTMLParser.getCarImage(model, car.mark);
+                    setClickListenerEvent(carImage,car.mark,car.model);
                     carImage.setWidth("250px");
                     if (i.get() < 5 && carList.size() > 5) {
                         Div div = new Div();
                         i.incrementAndGet();
                         div.add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
+                        setClickListenerEvent(carInfo,car.mark,car.model);
                         div.add(carInfo);
                         hl.get().add(div);
                     } else if (carList.size() <= 5) {
-                        hl.get().add(carImage);
+                        Div div = new Div();
+                        div.add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
-                        hl.get().add(carInfo);
+                        div.add(carInfo);
                         i.incrementAndGet();
+                        hl.get().add(div);
                         if (i.get() == carList.size()) {
                             hl.get().setClassName("carImagesLayout");
                             add(hl.get());
@@ -62,9 +68,22 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                         Div div = new Div();
                         div.add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
+                        setClickListenerEvent(carInfo,car.mark,car.model);
                         div.add(carInfo);
                         hl.get().add(div);
                     }
                 });
+    }
+
+    private void setClickListenerEvent(H6 carLabel,String mark,String model){
+        carLabel.addClickListener(h6ClickEvent -> {
+            UI.getCurrent().navigate("/search/carInfo/" +  mark.toLowerCase().trim() + '-' + model.toLowerCase().trim());
+        });
+    }
+
+    private void setClickListenerEvent(Image carImage,String mark,String model){
+        carImage.addClickListener(h6ClickEvent -> {
+            UI.getCurrent().navigate("/search/carInfo/" +  mark.toLowerCase().trim() + '-' + model.toLowerCase().trim());
+        });
     }
 }

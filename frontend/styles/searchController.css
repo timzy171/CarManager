@@ -1,9 +1,6 @@
-.carInfo{
-    cursor: pointer;
-}
-
 .carImagesLayout{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    cursor: pointer;
 }
