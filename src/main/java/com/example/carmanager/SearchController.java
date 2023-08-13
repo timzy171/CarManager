@@ -5,6 +5,7 @@ import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -28,55 +29,42 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
         List<Car> carList = carRepository.findByMarkAndModel(s);
         AtomicInteger i = new AtomicInteger();
         AtomicReference<HorizontalLayout> hl = new AtomicReference<>(new HorizontalLayout());
-        AtomicReference<HorizontalLayout> textHl = new AtomicReference<>(new HorizontalLayout());
         hl.get().setSpacing(false);
         hl.get().getThemeList().add("spacing-xl");
-        textHl.get().getThemeList().add("spacing-xl");
         carList.forEach(
                 car -> {
-                    String model = car.model.toLowerCase().replaceAll("-","_").replaceAll(" ","_");
-                    Image carImage = HTMLParser.getCarImage(model,car.mark);
+                    String model = car.model.toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
+                    Image carImage = HTMLParser.getCarImage(model, car.mark);
                     carImage.setWidth("250px");
-                    if(i.get() < 5 && carList.size() > 5){
+                    if (i.get() < 5 && carList.size() > 5) {
+                        Div div = new Div();
                         i.incrementAndGet();
+                        div.add(carImage);
+                        H6 carInfo = new H6(car.mark + " " + car.model);
+                        div.add(carInfo);
+                        hl.get().add(div);
+                    } else if (carList.size() <= 5) {
                         hl.get().add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
-                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));
-                    }
-                    else if(carList.size() <= 5){
-                        hl.get().add(carImage);
-                        H6 carInfo = new H6(car.mark + " " + car.model);
-                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));
+                        hl.get().add(carInfo);
                         i.incrementAndGet();
-                        if(i.get() == carList.size()){
+                        if (i.get() == carList.size()) {
+                            hl.get().setClassName("carImagesLayout");
                             add(hl.get());
-                            add(textHl.get());
                         }
-                    }
-                    else{
+                    } else {
+                        hl.get().setClassName("carImagesLayout");
                         add(hl.get());
-                        add(textHl.get());
                         hl.set(new HorizontalLayout());
                         hl.get().setSpacing(false);
                         hl.get().getThemeList().add("spacing-xl");
-                        textHl.set(new HorizontalLayout());
-                        textHl.get().getThemeList().add("spacing-xl");
                         i.set(1);
-                        hl.get().add(carImage);
+                        Div div = new Div();
+                        div.add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
-                        textHl.get().add(setSpacingTextAndRoute(carInfo,car));                    }
-                }
-        );
-    }
-
-    public H6 setSpacingTextAndRoute(H6 carName,Car car){
-        while(carName.getText().length() != 35){
-            carName.setText(carName.getText() + "ㅤ");
-        }
-        carName.addClickListener(h6ClickEvent -> {
-            UI.getCurrent().navigate("/search/carInfo/" +  car.mark.toLowerCase().trim() + '-' + car.model.toLowerCase().trim());
-        });
-        carName.setClassName("carInfo");
-        return carName;
+                        div.add(carInfo);
+                        hl.get().add(div);
+                    }
+                });
     }
 }

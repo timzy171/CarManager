@@ -120,7 +120,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
         iFrame.setAllow("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
         iFrame.getElement().setAttribute("allowfullscreen", true);
         iFrame.getElement().setAttribute("frameborder", "0");
-        iFrame.setHeight("315px");
+        iFrame.setHeight("500px");
         iFrame.setWidth("100%");
         if(videoURL != null){
             add(iFrame);
