@@ -7,9 +7,12 @@ injectGlobalCss($cssFromFile_0.toString(), 'CSSImport end', document);
 import $cssFromFile_1 from 'Frontend/styles/searchView.css?inline';
 
 injectGlobalCss($cssFromFile_1.toString(), 'CSSImport end', document);
-import $cssFromFile_2 from 'Frontend/styles/searchController.css?inline';
+import $cssFromFile_2 from 'Frontend/styles/markView.css?inline';
 
 injectGlobalCss($cssFromFile_2.toString(), 'CSSImport end', document);
+import $cssFromFile_3 from 'Frontend/styles/searchController.css?inline';
+
+injectGlobalCss($cssFromFile_3.toString(), 'CSSImport end', document);
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
 import '@vaadin/vaadin-lumo-styles/color-global.js';
 import '@vaadin/vaadin-lumo-styles/typography-global.js';
