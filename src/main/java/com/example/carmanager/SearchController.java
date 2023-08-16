@@ -28,6 +28,7 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, @OptionalParameter  String s) {
+        add(HelloPage.getMenu());
         List<Car> carList = carRepository.findByMarkAndModel(s);
         AtomicInteger i = new AtomicInteger();
         AtomicReference<HorizontalLayout> hl = new AtomicReference<>(new HorizontalLayout());

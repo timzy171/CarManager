@@ -7,7 +7,9 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -28,17 +30,8 @@ public class HelloPage extends VerticalLayout {
         for(Car car : carList){
             marks.add(car.mark);
         }
-        TextField searchText = new TextField();
-        var searchLayout = new HorizontalLayout();
-        searchText.setPlaceholder("Input car name");
-        Button searchButton = new Button();
-        searchButton.setText("FIND");
-        searchButton.addClickShortcut(Key.ENTER);
-        searchLayout.add(searchText);
-        searchLayout.add(searchButton);
-        setClassNames(searchText,searchButton);
-        searchLayout.setClassName("searchLayout");
-        add(searchLayout);
+
+        add(getMenu());
 
         var hl = new HorizontalLayout();
         hl.setSpacing(false);
@@ -67,15 +60,31 @@ public class HelloPage extends VerticalLayout {
                 i = 1;
             }
         }
+    }
 
+    public static HorizontalLayout getMenu(){
+        TextField searchText = new TextField();
+        var searchLayout = new HorizontalLayout();
+        Image image = new Image("./images/carManager.jpg","logo");
+        image.setWidth("200px");
+        image.addClickListener(imageClickEvent -> {
+            UI.getCurrent().navigate("/");
+        });
+        image.setClassName("image");
+        searchLayout.add(image);
+        searchText.setPlaceholder("Input car name");
+        Button searchButton = new Button();
+        searchButton.setText("FIND");
+        searchButton.addClickShortcut(Key.ENTER);
+        searchLayout.add(searchText);
+        searchLayout.add(searchButton);
+        searchText.setClassName("sTextField");
+        searchButton.setClassName("sButton");
+        searchLayout.setClassName("searchLayout");
         searchButton.addClickListener(event -> {
             String inputCar = searchText.getValue().toLowerCase().trim();
             UI.getCurrent().navigate("/search/" + inputCar);
         });
-    }
-
-    private void setClassNames(TextField searchText,Button searchButton){
-        searchText.setClassName("sTextField");
-        searchButton.setClassName("sButton");
+        return (searchLayout);
     }
 }

@@ -3,12 +3,14 @@ import com.example.carmanager.repo.CarRepository;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
 
+import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.OptionalParameter;
 import com.vaadin.flow.router.Route;
+import com.vaadin.ui.UI;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,6 +26,7 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
     CarRepository carRepository;
     @Override
     public void setParameter(BeforeEvent beforeEvent, @OptionalParameter String car) {
+        add(HelloPage.getMenu());
         String[] carInfo = car.split("-");
         String mark = carInfo[0];
         String model = "";
