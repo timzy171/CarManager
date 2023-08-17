@@ -237,7 +237,7 @@
  "frontendHashes": {
   "styles/carInfo.css": "cffe066dc43c34c43976482e0cbafa7078cf841f6a8e4958217e2821f55fb357",
   "styles/searchView.css": "99bce5db5342f09c5551f23076a71489358040a7bacbaa4fbb7c9caccbb7b6ea",
-  "styles/markView.css": "37feab39304620a5a85866bf96f7099a285dffe7141be2cc75ce6baf17193720",
+  "styles/markView.css": "41aea964f49096705c2215cf7455f45fe95b1819d4eebd20b6a10964dedfd5dc",
   "styles/searchController.css": "1fa4b5b9919dbcc043a68d4733e13a2ee36f3908123c0ac9db0452023936b65f",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
   "comboBoxConnector.js": "1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd",
@@ -260,12 +260,12 @@
  },
  "themeJsonContents": {},
  "entryScripts": [
-  "VAADIN/build/indexhtml-b1cd9c72.js"
+  "VAADIN/build/indexhtml-c83d50e6.js"
  ],
  "webComponents": [],
  "cvdlModules": {},
  "packageJsonHash": "dab916f7568ddf7c1412f4539935b9d88d4892f427f21fb6e65617c49fa18309",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-b1cd9c72.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-c83d50e6.js\"></script>"
  ]
 }

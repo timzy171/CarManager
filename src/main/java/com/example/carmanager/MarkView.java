@@ -1,8 +1,11 @@
 package com.example.carmanager;
 
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
@@ -27,10 +30,11 @@ public class MarkView extends VerticalLayout implements HasUrlParameter<String> 
             Document document = Jsoup.connect(URL).get();
             Elements dts = document.select("dl.col-md-8").select("dt");
             Elements dds = document.select("dl.col-md-8").select("dd");
-            String markName = document.select("h1").get(0).text();
             var labelLayout = new HorizontalLayout();
+            Image markImage = new Image("logo/" + mark.toLowerCase() + ".png",mark);
             labelLayout.addClassName("labelLayout");
-            labelLayout.add(new H2(markName));
+            markImage.setWidth("200px");
+            labelLayout.add(markImage);
             add(labelLayout);
             for (int i = 0; i < 5; i++) {
                 var hl = new HorizontalLayout();
@@ -42,9 +46,17 @@ public class MarkView extends VerticalLayout implements HasUrlParameter<String> 
                 }
                 hl.add(new H3(dds.get(i).text()));
                 hl.addClassName("infoLayout");
-                hl.setAlignItems(Alignment.CENTER);
                 add(hl);
             }
+            var buttonHl = new HorizontalLayout();
+            Button allCarsButton = new Button("SHOW ALL CARS");
+            allCarsButton.addClickListener(event -> {
+                UI.getCurrent().navigate("/search/" + mark);
+            });
+            buttonHl.addClassName("buttonHl");
+            allCarsButton.addClassName("allCarsButton");
+            buttonHl.add(allCarsButton);
+            add(buttonHl);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

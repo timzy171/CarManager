@@ -3,6 +3,7 @@ package com.example.carmanager;
 
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
+import com.vaadin.annotations.Push;
 import com.vaadin.flow.component.ClickNotifier;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
@@ -21,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Route("/search")
+@Push
 @CssImport(value = "./styles/searchController.css")
 public class SearchController extends VerticalLayout implements HasUrlParameter<String>{
     @Autowired
