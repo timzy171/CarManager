@@ -38,6 +38,7 @@
 }
 
 .infoText{
+    text-indent: 25px;
     line-height: 150%;
     color: #525252;
     font-family: "Lucida Console", "Courier New", sans-serif;

@@ -4,8 +4,6 @@ package com.example.carmanager;
 import com.example.carmanager.entity.Car;
 import com.example.carmanager.repo.CarRepository;
 import com.vaadin.annotations.Push;
-import com.vaadin.flow.component.ClickNotifier;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
@@ -46,15 +44,12 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                     if (i.get() < 5 && carList.size() > 5) {
                         Div div = new Div();
                         i.incrementAndGet();
-                        div.add(carImage);
-                        H6 carInfo = new H6(car.mark + " " + car.model);
-                        setClickListenerEvent(carInfo,car.mark,car.model);
-                        div.add(carInfo);
-                        hl.get().add(div);
+                        addDivToLayout(hl, car, carImage, div);
                     } else if (carList.size() <= 5) {
                         Div div = new Div();
                         div.add(carImage);
                         H6 carInfo = new H6(car.mark + " " + car.model);
+                        carInfo.addClassName("carLabel");
                         div.add(carInfo);
                         i.incrementAndGet();
                         hl.get().add(div);
@@ -70,13 +65,18 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                         hl.get().getThemeList().add("spacing-xl");
                         i.set(1);
                         Div div = new Div();
-                        div.add(carImage);
-                        H6 carInfo = new H6(car.mark + " " + car.model);
-                        setClickListenerEvent(carInfo,car.mark,car.model);
-                        div.add(carInfo);
-                        hl.get().add(div);
+                        addDivToLayout(hl, car, carImage, div);
                     }
                 });
+    }
+
+    private void addDivToLayout(AtomicReference<HorizontalLayout> hl, Car car, Image carImage, Div div) {
+        div.add(carImage);
+        H6 carInfo = new H6(car.mark + " " + car.model);
+        carInfo.addClassName("carLabel");
+        setClickListenerEvent(carInfo,car.mark,car.model);
+        div.add(carInfo);
+        hl.get().add(div);
     }
 
     private void setClickListenerEvent(H6 carLabel,String mark,String model){

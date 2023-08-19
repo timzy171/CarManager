@@ -235,10 +235,10 @@
   "Frontend/styles/searchView.css"
  ],
  "frontendHashes": {
-  "styles/carInfo.css": "db91f78269aa7429168f33c0496eb8e6be2394d914c91461222551abc162641f",
-  "styles/searchView.css": "a0c119564c7800102b68366106639dcad2a3c6ac425ba9f26b60691f2c8bab74",
-  "styles/markView.css": "55c2b58ff1c0979254b615a8995b128c756cc1e5b09605b925ac7a1d32b832f0",
-  "styles/searchController.css": "44f09ab73d55a9c1f6dc5c709e2bc9618ebe0cdf4c4f94fd4d3cccbfce199573",
+  "styles/carInfo.css": "d1ac84d77dee01dec0f84f073ac3bf70ece851184e24e847efb660466fe9a70d",
+  "styles/searchView.css": "0aae7154a6e4b494b9564b4ed2c05a080f89791549fd4375d9beee1413e826dc",
+  "styles/markView.css": "fa3c826fc219c76b81f5037d1338fef472ecd9aa91d4c6194e9307f2306b5681",
+  "styles/searchController.css": "02fd6f16532705255583d5f1ff9c414516ec8cf2ac834a9609bd4130751813f7",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
   "comboBoxConnector.js": "1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd",
   "contextMenuConnector.js": "25a200f8086461635ddd92316ebeb5a868294c8650a190efbae120edb1088f4f",
@@ -260,12 +260,12 @@
  },
  "themeJsonContents": {},
  "entryScripts": [
-  "VAADIN/build/indexhtml-7c562ef6.js"
+  "VAADIN/build/indexhtml-90328a72.js"
  ],
  "webComponents": [],
  "cvdlModules": {},
  "packageJsonHash": "dab916f7568ddf7c1412f4539935b9d88d4892f427f21fb6e65617c49fa18309",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-7c562ef6.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-90328a72.js\"></script>"
  ]
 }

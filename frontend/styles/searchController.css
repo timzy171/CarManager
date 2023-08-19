@@ -13,3 +13,9 @@
     opacity: 0.7;
     transition: 0.5s;
 }
+.carLabel:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: black;
+    transition: 0.3s;
+}
