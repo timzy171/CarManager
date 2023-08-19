@@ -2,5 +2,14 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.searchCarImage {
+    border-radius: 50%;
     cursor: pointer;
+}
+
+.searchCarImage:hover{
+    opacity: 0.7;
+    transition: 0.5s;
 }

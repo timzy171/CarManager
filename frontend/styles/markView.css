@@ -12,9 +12,13 @@
 }
 
 .allCarsButton{
-    background-color: #606060;
     border-radius: 8px;
-    color: antiquewhite;
+    cursor: pointer;
+}
+
+.allCarsButton:hover{
+    transition: 0.3s;
+    background-color: #11d7d7;
 }
 
 .buttonHl{
@@ -23,14 +27,18 @@
 }
 
 .markLabelHl{
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .infoHl{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.infoText{
     line-height: 150%;
     color: #525252;
-    margin-left: auto;
-    margin-right: auto;
     font-family: "Lucida Console", "Courier New", sans-serif;
 }

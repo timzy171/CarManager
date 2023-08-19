@@ -40,6 +40,7 @@ public class SearchController extends VerticalLayout implements HasUrlParameter<
                 car -> {
                     String model = car.model.toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
                     Image carImage = HTMLParser.getCarImage(model, car.mark);
+                    carImage.setClassName("searchCarImage");
                     setClickListenerEvent(carImage,car.mark,car.model);
                     carImage.setWidth("250px");
                     if (i.get() < 5 && carList.size() > 5) {

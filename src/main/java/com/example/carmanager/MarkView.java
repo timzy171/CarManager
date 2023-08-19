@@ -2,6 +2,7 @@ package com.example.carmanager;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
@@ -54,19 +55,24 @@ public class MarkView extends VerticalLayout implements HasUrlParameter<String> 
                 UI.getCurrent().navigate("/search/" + mark);
             });
             buttonHl.addClassName("buttonHl");
+            allCarsButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY,
+                    ButtonVariant.LUMO_CONTRAST);
             allCarsButton.addClassName("allCarsButton");
             buttonHl.add(allCarsButton);
             add(buttonHl);
             String info = document.select("p").get(1).text();
-            var markLabelHl = new HorizontalLayout();
-            markLabelHl.add(new H2("Про " + mark.toUpperCase()));
-            var infoHl = new HorizontalLayout();
-            infoHl.add(new H3(info));
-            markLabelHl.setClassName("markLabelHl");
-            infoHl.setClassName("infoHl");
-            add(markLabelHl);
-            add(infoHl);
-
+            if(info.length() > 50){
+                var markLabelHl = new HorizontalLayout();
+                markLabelHl.add(new H2("Про " + mark.toUpperCase()));
+                var infoHl = new HorizontalLayout();
+                H3 infoText = new H3(info);
+                infoText.setClassName("infoText");
+                infoHl.add(infoText);
+                markLabelHl.setClassName("markLabelHl");
+                infoHl.setClassName("infoHl");
+                add(markLabelHl);
+                add(infoHl);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
