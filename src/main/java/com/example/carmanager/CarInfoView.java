@@ -77,11 +77,14 @@ public class CarInfoView  extends VerticalLayout implements HasUrlParameter<Stri
 
         for (Element element : info) {
             if (element.is("h2")) {
-                H2 text = new H2(firstUpperCase(element.text()));
-                text.addClassName("title");
-                add(text);
+                try {
+                    H2 text = new H2(firstUpperCase(element.text()));
+                    text.addClassName("title");
+                    add(text);
+                }
+                catch (Exception ignored){}
             }
-            if (element.is("p")) {
+            else if (element.is("p")) {
                 H4 text = new H4(element.text());
                 text.addClassName("info");
                 add(text);
