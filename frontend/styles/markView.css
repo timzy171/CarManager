@@ -2,11 +2,13 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
+    font-family: "Lucida Console", "Courier New", sans-serif;
 }
 
 .infoLayout{
     margin-left: auto;
     margin-right: auto;
+    font-family: "Lucida Console", "Courier New", sans-serif;
 }
 
 .allCarsButton{
@@ -18,4 +20,17 @@
 .buttonHl{
     margin-left: auto;
     margin-right: auto;
+}
+
+.markLabelHl{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.infoHl{
+    line-height: 150%;
+    color: #525252;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Lucida Console", "Courier New", sans-serif;
 }

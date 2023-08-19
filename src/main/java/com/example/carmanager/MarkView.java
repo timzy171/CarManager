@@ -57,6 +57,15 @@ public class MarkView extends VerticalLayout implements HasUrlParameter<String> 
             allCarsButton.addClassName("allCarsButton");
             buttonHl.add(allCarsButton);
             add(buttonHl);
+            String info = document.select("p").get(1).text();
+            var markLabelHl = new HorizontalLayout();
+            markLabelHl.add(new H2("Про " + mark.toUpperCase()));
+            var infoHl = new HorizontalLayout();
+            infoHl.add(new H3(info));
+            markLabelHl.setClassName("markLabelHl");
+            infoHl.setClassName("infoHl");
+            add(markLabelHl);
+            add(infoHl);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
