@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client</artifactId>
-            <version>8.21.0</version>
+            <version>8.17.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -120,7 +120,7 @@
                     <plugin>
                         <groupId>com.vaadin</groupId>
                         <artifactId>vaadin-maven-plugin</artifactId>
-                        <version>${vaadin.version}</version>
+                        <version>24.1.4</version>
                         <executions>
                             <execution>
                                 <id>frontend</id>
@@ -131,6 +131,9 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <nodeAutoUpdate>true</nodeAutoUpdate>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
