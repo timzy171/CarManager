@@ -29,6 +29,11 @@ In addition to the car model, the user can also find out about the car brand. Yo
 ![image](https://github.com/timzy171/CarManager/assets/115809444/c176c83e-1435-46a9-b5e8-d00c2d9c4846)
 ![image](https://github.com/timzy171/CarManager/assets/115809444/8b59e1e6-154c-448e-9427-334b8fb6af4d)
 
+Also in this repository you can find files such as `Dockerfile` and `docker-compose.yml`.
+With the help of them, two images are created, on the basis of which the container is created and launched.
+![image](https://github.com/timzy171/CarManager/assets/115809444/06b6b5f5-5e39-4213-adfe-035fb4ecdfaa)
+
+
 
 
 
