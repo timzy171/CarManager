@@ -1,5 +1,5 @@
 # CarManager
-## During the development process, technologies such as: `Spring Boot`, `Vaadin framework`, `Hibernate`, `Docker`.
+## During the development process, technologies such as:  `Java`, `Spring Boot`, `Vaadin framework`, `Hibernate`, `Docker`.
 ### `PostgreSQL` was chosen as the database.
 
 СarManager is a car search site. It provides information about more than `725` car models, as well as detailed information about `85+` car brands.
