@@ -8,10 +8,9 @@ services:
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_PASSWORD=vfr4vgy7'
       - 'POSTGRES_DB=postgres'
-      - 'P'
 
   app:
     build: ./
     container_name: 'java-app'
     ports:
-      - "8080:8080"
+      - "8080:8090"

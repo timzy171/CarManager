@@ -68,7 +68,7 @@ public class HelloPage extends VerticalLayout {
     public static HorizontalLayout getMenu(){
         TextField searchText = new TextField();
         var searchLayout = new HorizontalLayout();
-        Image image = new Image("./images/carManager.jpg","logo");
+        Image image = new Image("./images/carManagerLogo.jpg","logo");
         image.setWidth("200px");
         image.addClickListener(imageClickEvent -> {
             UI.getCurrent().navigate("/");
