@@ -24,6 +24,13 @@ Also, on the pages of some models, the user is invited to watch a `video review`
 This certainly helps the user when choosing a particular car.
 ![image](https://github.com/timzy171/CarManager/assets/115809444/749e2620-68a0-464e-8436-36d5f9637bf6)
 
+In addition to the car model, the user can also find out about the car brand. You just need to click on the logo on the main page, after which you will be taken to the auto brand page. On this page we see the name of the brand in Russian, the year of foundation, who owns this car brand, what country it is from and the number of cars produced by this car brand. And, of course, there is information about the history of the brand.
+
+![image](https://github.com/timzy171/CarManager/assets/115809444/c176c83e-1435-46a9-b5e8-d00c2d9c4846)
+![image](https://github.com/timzy171/CarManager/assets/115809444/8b59e1e6-154c-448e-9427-334b8fb6af4d)
+
+
+
 
 
 
