@@ -88,7 +88,7 @@ public class HelloPage extends VerticalLayout {
         searchLayout.setClassName("searchLayout");
         searchButton.addClickListener(event -> {
             String inputCar = searchText.getValue().toLowerCase().trim();
-            UI.getCurrent().navigate("/search/" + inputCar);
+            UI.getCurrent().getPage().open("/search/" + inputCar);
         });;
         return (searchLayout);
     }

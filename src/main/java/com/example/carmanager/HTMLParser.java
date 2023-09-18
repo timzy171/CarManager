@@ -13,6 +13,7 @@ public class HTMLParser {
         try {
             if (model.contains(" ")) {
                 URL = "http://www.motorpage.ru/" + CarInfoView.firstUpperCase(mark) + "/" + model + "/last/";
+                Integer a = 2;
             } else {
                 URL = "http://www.motorpage.ru/" + CarInfoView.firstUpperCase(mark) + "/" + CarInfoView.firstUpperCase(model) + "/last/";
 

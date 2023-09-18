@@ -51,9 +51,7 @@ public class MarkView extends VerticalLayout implements HasUrlParameter<String> 
             }
             var buttonHl = new HorizontalLayout();
             Button allCarsButton = new Button("SHOW ALL CARS");
-            allCarsButton.addClickListener(event -> {
-                UI.getCurrent().navigate("/search/" + mark);
-            });
+            allCarsButton.addClickListener(event -> UI.getCurrent().navigate("/search/" + mark));
             buttonHl.addClassName("buttonHl");
             allCarsButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY,
                     ButtonVariant.LUMO_CONTRAST);
