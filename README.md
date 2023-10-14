@@ -33,6 +33,7 @@ Also in this repository you can find files such as `Dockerfile` and `docker-comp
 With the help of them, two images are created, on the basis of which the container is created and launched.
 ![image](https://github.com/timzy171/CarManager/assets/115809444/06b6b5f5-5e39-4213-adfe-035fb4ecdfaa)
 
+For use this repository, you need to download the cars database. Check this link : https://disk.yandex.ru/d/4MNWl3uPyF4Hxw
 
 
 
